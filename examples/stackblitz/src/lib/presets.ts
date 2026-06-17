@@ -1,11 +1,7 @@
 export const PRESET_PALETTES = {
-  // The 4 green values are verified (matched exactly against independently-
-  // confirmed OKLCH conversions). Berry, Teal, Gray, and Orange are
-  // approximations of classic Game Boy Color shell colors — not verified
-  // against an official source. Orange fills the warm gap between berry
-  // (6°) and the green cluster (~122°).
-  gameboy: {
-    label: 'Game Boy',
+  // Nostalgia Co. — classic handheld greens plus berry, teal, gray, orange accents.
+  nostalgiaCo: {
+    label: 'Nostalgia Co.',
     colors: [
       '#0f380f',
       '#306230',
@@ -17,11 +13,9 @@ export const PRESET_PALETTES = {
       '#9a9a9a',
     ],
   },
-  // Blue-violet core plus warm/cool accents that sit far outside the
-  // 219–278° cluster — coral, emerald, and amber are plausible SaaS
-  // semantic colors that open the path to ~240° of real hue variety.
-  saasBlue: {
-    label: 'SaaS Blue',
+  // Ledger & Loop — blue-violet SaaS core with coral, emerald, and amber accents.
+  ledgerLoop: {
+    label: 'Ledger & Loop',
     colors: [
       '#635bff',
       '#0a2540',
@@ -33,10 +27,37 @@ export const PRESET_PALETTES = {
       '#fbbf24',
     ],
   },
-  // Yellow/teal anchors plus violet and red accents — three distinct hue
-  // families instead of two near-duplicate yellows and one teal.
-  marketingYellow: {
-    label: 'Marketing Yellow',
+  // Tidewell — deep ocean blues through bright surf and sea-glass teal.
+  tidewell: {
+    label: 'Tidewell',
+    colors: [
+      '#0a1628',
+      '#0c4a6e',
+      '#0369a1',
+      '#0ea5e9',
+      '#38bdf8',
+      '#164e63',
+      '#14b8a6',
+      '#e0f2fe',
+    ],
+  },
+  // Harvest Supply — burnt earth through amber harvest tones.
+  harvestSupply: {
+    label: 'Harvest Supply',
+    colors: [
+      '#451a03',
+      '#7c2d12',
+      '#9a3412',
+      '#c2410c',
+      '#ea580c',
+      '#f97316',
+      '#fb923c',
+      '#fbbf24',
+    ],
+  },
+  // Bright Signal — yellow/teal marketing anchors with violet and coral accents.
+  brightSignal: {
+    label: 'Bright Signal',
     colors: [
       '#ffe01b',
       '#241c15',
@@ -48,10 +69,9 @@ export const PRESET_PALETTES = {
       '#2dd4bf',
     ],
   },
-  // Restrained neutrals with rose/blue tints bridging two real accents
-  // (#2383e2, #e85d75) — tints keep chroma low but anchor the hue path.
-  minimalMono: {
-    label: 'Minimal Mono',
+  // Northbound — restrained neutrals with rose/blue tints and two accent hues.
+  northbound: {
+    label: 'Northbound',
     colors: [
       '#000000',
       '#373530',
@@ -68,3 +88,17 @@ export const PRESET_PALETTES = {
 export type PresetKey = keyof typeof PRESET_PALETTES
 
 export type SelectedPreset = PresetKey | 'unbranded'
+
+export const PRESET_ORDER = [
+  'nostalgiaCo',
+  'ledgerLoop',
+  'tidewell',
+  'harvestSupply',
+  'brightSignal',
+  'northbound',
+] as const satisfies readonly PresetKey[]
+
+/** Representative swatch shown on each preset pill (first of eight brand colors). */
+export function presetDotColor(key: PresetKey): string {
+  return PRESET_PALETTES[key].colors[0]
+}
