@@ -140,7 +140,7 @@ This reads your blog posts, looks up each word's real semantic position using Gl
 
 ## Try it live
 
-[StackBlitz demo — link coming soon]
+[StackBlitz demo](https://stackblitz.com/github/drewpoling2/tiny-mood/tree/main/examples/stackblitz) — tabbed examples with brand presets, blend shapes, and an interactive Blend Lab.
 
 ## License
 

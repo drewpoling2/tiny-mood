@@ -25,7 +25,11 @@ const { background, filter, mood } = getMoodBackground(text, moodTable, seed)
 
 See each package's README for full API docs, parameters, and examples.
 
-## Demo (this repo)
+## Demo
+
+**[Try it on StackBlitz](https://stackblitz.com/github/drewpoling2/tiny-mood/tree/main/examples/stackblitz)** — tabbed examples with brand presets, blend shapes, and Blend Lab.
+
+Local dev (if you have the `demo` workspace):
 
 ```bash
 npm run dev
