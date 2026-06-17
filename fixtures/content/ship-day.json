@@ -1,0 +1,11 @@
+{
+  "slug": "ship-day",
+  "title": "Ship Day Release",
+  "description": "Release deploy update — a fast launch announcing ship day.",
+  "sections": [
+    {
+      "heading": "Ship day",
+      "body": "Release deploy update — a fast launch announcing ship day."
+    }
+  ]
+}

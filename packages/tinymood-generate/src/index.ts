@@ -1,0 +1,6 @@
+export { generateMoodTable, writeMoodTable } from './generate.js'
+export type { GenerationStats } from './generate.js'
+export { ensureGloveFile, resolveGlovePath, DEFAULT_CACHED_TEXT_PATH } from './ensure-glove.js'
+export type { EnsureGloveOptions } from './ensure-glove.js'
+export { convertWord2VecBinaryToText } from './convert-word2vec.js'
+export { lookupWordsInGloveFile } from './parse-glove.js'

@@ -1,0 +1,39 @@
+{
+  "name": "tiny-mood",
+  "version": "0.3.0",
+  "description": "Tiny, zero-dependency text-to-mood-to-color utility. Consumes a pre-built mood table JSON — use tiny-mood-generate to build one from your content.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/browser.d.ts",
+      "import": "./dist/browser.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "color",
+    "mood",
+    "oklch",
+    "gradient",
+    "palette",
+    "background"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewpoling2/tinymood.git",
+    "directory": "packages/tinymood"
+  },
+  "homepage": "https://github.com/drewpoling2/tinymood",
+  "author": "Drew Poling"
+}

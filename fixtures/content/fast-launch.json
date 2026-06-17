@@ -1,0 +1,11 @@
+{
+  "slug": "fast-launch",
+  "title": "Fast Launch Day",
+  "description": "A fast launch announcing release — deploy, update, and exciting community welcome.",
+  "sections": [
+    {
+      "heading": "Ship day",
+      "body": "A fast launch announcing release — deploy, update, and welcome the community."
+    }
+  ]
+}

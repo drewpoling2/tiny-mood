@@ -1,4 +1,8 @@
 node_modules
 dist
+demo/.next
 *.tsbuildinfo
 .env
+packages/tinymood/*.tgz
+examples/stackblitz/node_modules
+examples/stackblitz/dist

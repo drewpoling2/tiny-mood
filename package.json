@@ -1,39 +1,17 @@
 {
-  "name": "tinymood",
-  "version": "0.1.0",
-  "description": "Tiny, zero-dependency text-to-mood-to-color utility. Deterministic, no LLM, no network — pure functions that turn arbitrary text into an OKLCH color palette and CSS gradient background.",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "files": ["dist"],
+  "name": "tiny-mood-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "demo"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build -w tiny-mood && npm run build -w tiny-mood-generate",
+    "generate": "npm run build -w tiny-mood-generate && node packages/tinymood-generate/dist/cli.js fixtures/content fixtures/output-table.json --glove fixtures/mini-glove.txt",
+    "test": "npm run build && node test/composeBackground.test.mjs && node smoke-test.mjs && node test/brand-getMoodBackground.test.mjs && node test/createBrandPalette.test.mjs && node packages/tinymood-generate/test/generate.test.mjs",
+    "dev": "npm run build && npm run dev -w demo",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [
-    "color",
-    "mood",
-    "oklch",
-    "gradient",
-    "palette",
-    "background",
-    "generative",
-    "sentiment",
-    "css"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drewpoling2/tinymood.git"
-  },
-  "homepage": "https://github.com/drewpoling2/tinymood",
-  "author": "Drew Poling",
   "devDependencies": {
     "@types/node": "^22.15.30",
     "typescript": "^5.8.3"

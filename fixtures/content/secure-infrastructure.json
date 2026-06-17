@@ -1,0 +1,11 @@
+{
+  "slug": "secure-infrastructure",
+  "title": "Building Secure Infrastructure",
+  "description": "Architecture, deploy pipelines, and the bug that taught us about governance.",
+  "sections": [
+    {
+      "heading": "Lessons learned",
+      "body": "Enterprise regulatory requirements shaped our orchestration strategy."
+    }
+  ]
+}

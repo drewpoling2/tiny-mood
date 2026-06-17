@@ -1,0 +1,43 @@
+{
+  "name": "tiny-mood-generate",
+  "version": "0.3.0",
+  "description": "Build a project-specific mood table from your content using GloVe embeddings. Dev/build-time only — not a runtime dependency of tiny-mood.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "tiny-mood-generate": "./dist/cli.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "tiny-mood": "file:../tinymood"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "glove",
+    "mood",
+    "embeddings",
+    "codegen"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewpoling2/tinymood.git",
+    "directory": "packages/tinymood-generate"
+  },
+  "homepage": "https://github.com/drewpoling2/tinymood",
+  "author": "Drew Poling"
+}

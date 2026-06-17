@@ -1,0 +1,11 @@
+{
+  "slug": "pipeline-deploy",
+  "title": "Pipeline Deploy Log",
+  "description": "Pipeline deploy log — architecture bug fix and infrastructure update.",
+  "sections": [
+    {
+      "heading": "Deploy log",
+      "body": "Pipeline deploy log — architecture bug fix and infrastructure update."
+    }
+  ]
+}

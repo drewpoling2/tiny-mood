@@ -1,4 +1,4 @@
-import type { MoodVector } from './mood-vector.js'
+import type { MoodVector } from './types.js'
 import type { Oklch } from './oklch.js'
 
 function warmthToHue(warmth: number): number {

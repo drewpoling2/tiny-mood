@@ -1,0 +1,11 @@
+{
+  "slug": "metrics-benchmark",
+  "title": "Benchmarking Release Metrics",
+  "description": "Technical data on orchestration performance across enterprise infrastructure.",
+  "sections": [
+    {
+      "heading": "Methodology",
+      "body": "We benchmark deploy pipelines and release metrics against enterprise baselines."
+    }
+  ]
+}
