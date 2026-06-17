@@ -2,6 +2,7 @@ import type { MoodOptions } from '../../lib/demo-types'
 import { formatMoodValue } from '../../lib/mood-format'
 import { commitEntries } from '../../lib/commits'
 import { useMoodSurface } from '../../hooks/useMoodSurface'
+import { MoodClip } from '../MoodClip'
 
 function CommitRow({
   entry,
@@ -18,10 +19,10 @@ function CommitRow({
 
   return (
     <article className="commit-row">
-      <div
+      <MoodClip
         className="commit-swatch"
-        aria-hidden="true"
-        style={{ background, filter }}
+        background={background}
+        filter={filter}
       />
       <div className="commit-body">
         <p className="commit-message">{entry.message}</p>

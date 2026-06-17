@@ -2,6 +2,7 @@ import type { MoodOptions } from '../../lib/demo-types'
 import { formatMoodValue } from '../../lib/mood-format'
 import { avatarPersonas } from '../../lib/avatars'
 import { useMoodSurface } from '../../hooks/useMoodSurface'
+import { MoodClip } from '../MoodClip'
 
 function AvatarCard({
   person,
@@ -19,10 +20,10 @@ function AvatarCard({
 
   return (
     <article className="avatar-card">
-      <div
+      <MoodClip
         className="avatar-circle"
-        aria-hidden="true"
-        style={{ background, filter }}
+        background={background}
+        filter={filter}
       />
       <h2 className="avatar-name">{person.name}</h2>
       <p className="avatar-title">{person.title}</p>

@@ -8,8 +8,9 @@ export function App() {
           <p className="eyebrow">tiny-mood</p>
           <h1>Mood-driven backgrounds from text</h1>
           <p className="lede">
-            No images, no LLM, no network. A word table and OKLCH math — the same
-            text always produces the same gradient.
+            Pass in your brand colors and any text — a post, a caption, a commit
+            message. tiny-mood reads the text&apos;s tone and returns a background
+            that matches it, clamped to your colors.
           </p>
         </div>
         <div className="site-header-links">

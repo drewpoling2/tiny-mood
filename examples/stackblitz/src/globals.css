@@ -14,16 +14,26 @@ body,
 
 body {
   font-family:
+    'DM Sans',
     ui-sans-serif,
     system-ui,
     -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
     sans-serif;
   background: #0a0a0c;
   color: #e8eaef;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* DM Mono for hashes, mood scores, and other numeric UI */
+.mood-stats dd,
+.commit-meta,
+.commit-mood dd,
+.blend-lab-stat dd,
+.journal-day-num,
+.blog-card-meta time {
+  font-family: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-weight: 400;
 }
 
 .app {
@@ -66,7 +76,7 @@ body {
 
 .lede {
   margin: 0;
-  max-width: 46ch;
+  max-width: 65ch;
   color: #8b93a7;
   font-size: 0.95rem;
 }
@@ -88,7 +98,9 @@ body {
   font-size: 0.82rem;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 0.15s, color 0.15s;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
 }
 
 .header-link:hover {
@@ -104,6 +116,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 1.25rem;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .tab-link {
@@ -129,29 +142,26 @@ body {
   border-bottom-color: #e8eaef;
 }
 
-/* ── Control bar ── */
+/* ── Control panel ── */
 
-.control-bar {
+.control-panel {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem 2rem;
+  flex-direction: column;
+  gap: 0.75rem;
   padding: 0.85rem 0 1.25rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.control-group {
+.control-row {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
   flex-wrap: wrap;
+  gap: 0.65rem 1rem;
 }
 
-.control-group--slider {
-  flex: 1;
-  min-width: 160px;
-  max-width: 220px;
+.control-row--brand {
+  width: 100%;
 }
 
 .control-label {
@@ -161,6 +171,10 @@ body {
   text-transform: uppercase;
   color: #6f778a;
   flex-shrink: 0;
+}
+
+.control-label--spaced {
+  margin-left: 0.75rem;
 }
 
 .control-pills {
@@ -181,7 +195,10 @@ body {
   font-size: 0.78rem;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
 }
 
 .control-pill:hover {
@@ -203,23 +220,134 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.intensity-slider {
-  width: 100%;
+.brand-colors-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.brand-color-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.control-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 140px;
+}
+
+.control-slider {
+  flex: 1;
+  min-width: 0;
   accent-color: #c5cad6;
   cursor: pointer;
 }
 
-.intensity-slider:disabled {
+.control-slider:disabled {
   opacity: 0.35;
   cursor: not-allowed;
 }
 
+.control-slider--angle {
+  width: 72px;
+  flex: none;
+}
+
+.control-slider-value,
+.control-angle-value {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: #9aa3b5;
+  min-width: 2.5rem;
+  flex-shrink: 0;
+}
+
+.control-angle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.control-angle-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.control-sublabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5a6275;
+  flex-shrink: 0;
+}
+
+/* ── Mood axis stats (Blend Lab) ── */
+
+.blend-lab .mood-axis-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08rem;
+  margin: 0;
+  font-family: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-weight: 400;
+}
+
+.blend-lab .mood-axis-stat dt {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.blend-lab .mood-axis-label {
+  font-size: 0.58rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.38);
+  white-space: nowrap;
+}
+
+.blend-lab .mood-axis-stat dd {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.blend-lab .mood-axis-stat--large dd {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+}
+
 /* ── Shared mood surface ── */
+
+.mood-clip {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #14161c;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  isolation: isolate;
+}
 
 .mood-surface {
   position: absolute;
-  inset: -25%;
-  transform: scale(1.12);
+  inset: -30%;
+  transform: scale(1.15);
+  pointer-events: none;
 }
 
 /* ── Blog cards ── */
@@ -438,7 +566,6 @@ body {
   height: 72px;
   margin: 0 auto 0.85rem;
   border-radius: 50%;
-  overflow: hidden;
 }
 
 .avatar-name {
@@ -490,7 +617,6 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .commit-message {
@@ -600,18 +726,175 @@ body {
   z-index: 1;
 }
 
+/* ── Blend Lab ── */
+
+.blend-lab {
+  width: 100%;
+}
+
+.blend-lab-hero {
+  position: relative;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #14161c;
+  margin-bottom: 1.25rem;
+}
+
+.blend-lab-hero-bg {
+  position: absolute;
+  inset: -25%;
+  transform: scale(1.12);
+}
+
+.blend-lab-hero-stats {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+}
+
+.blend-lab-hero-stats .mood-axis-stat {
+  flex: 1;
+}
+
+.blend-lab-hero-stats .mood-axis-stat:not(:first-child) {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.blend-lab-hint {
+  margin: 0 0 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a6275;
+}
+
+.blend-lab-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+.blend-lab-tag {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  color: #9aa3b5;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+
+.blend-lab-tag:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #c5cad6;
+}
+
+.blend-lab-tag.active {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.blend-lab-breakdown {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: #111318;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.blend-lab-breakdown-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a6275;
+}
+
+.blend-lab-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.blend-lab-breakdown-card {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #111318;
+  font-family: 'DM Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-weight: 400;
+}
+
+.blend-lab-breakdown-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.blend-lab-breakdown-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.blend-lab-breakdown-stats .mood-axis-stat {
+  align-items: flex-start;
+  font-family: inherit;
+}
+
+.blend-lab-breakdown-stats .mood-axis-stat dt,
+.blend-lab-breakdown-stats .mood-axis-label,
+.blend-lab-breakdown-stats .mood-axis-stat dd {
+  font-family: inherit;
+}
+
+.blend-lab-breakdown-stats .mood-axis-stat dd {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.blend-lab-empty {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #6f778a;
+}
+
 @media (max-width: 720px) {
   .site-header {
     flex-direction: column;
   }
 
-  .control-bar {
-    flex-direction: column;
-    align-items: flex-start;
+  .control-panel {
+    gap: 1rem;
   }
 
-  .control-group--slider {
-    max-width: 100%;
+  .brand-colors-strip {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+  .control-label--spaced {
+    margin-left: 0;
+  }
+
+  .control-slider-wrap {
     width: 100%;
   }
 
@@ -623,5 +906,13 @@ body {
     grid-column: 1 / -1;
     justify-content: flex-start;
     padding-left: 52px;
+  }
+
+  .blend-lab-hero-stats .mood-axis-stat:not(:first-child) {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .blend-lab .mood-axis-stat--large dd {
+    font-size: 1.35rem;
   }
 }

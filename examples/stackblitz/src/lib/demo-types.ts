@@ -9,6 +9,7 @@ export type DemoTab =
   | 'avatars'
   | 'commits'
   | 'journal'
+  | 'blendLab'
 
 export type MoodOptions = Pick<
   MoodBackgroundOptions,
@@ -25,13 +26,15 @@ export interface DemoState {
 export function buildMoodOptions(
   selected: SelectedPreset,
   blendShape: BlendShape,
-  blendIntensity: number
+  blendIntensity: number,
+  blendAngleMin: number,
+  blendAngleMax: number
 ): MoodOptions {
   const preset = selected !== 'unbranded' ? PRESET_PALETTES[selected] : null
   return {
     blendShape,
     blendIntensity,
-    blendAngleRange: [100, 160],
+    blendAngleRange: [blendAngleMin, blendAngleMax],
     ...(preset ? { colors: [...preset.colors] } : {}),
   }
 }

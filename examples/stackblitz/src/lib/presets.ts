@@ -28,6 +28,8 @@ export const PRESET_PALETTES = {
     ],
   },
   // Tidewell — deep ocean blues through bright surf and sea-glass teal.
+  // Coral (#fb7185) is an invented coastal accent — not a verified real-world
+  // brand color — to open hue range beyond the blue/teal cluster.
   tidewell: {
     label: 'Tidewell',
     colors: [
@@ -39,9 +41,12 @@ export const PRESET_PALETTES = {
       '#164e63',
       '#14b8a6',
       '#e0f2fe',
+      '#fb7185',
     ],
   },
   // Harvest Supply — burnt earth through amber harvest tones.
+  // Deep olive (#3f6212) is an invented agricultural accent — not a verified
+  // real-world brand color — to open hue range beyond the orange/amber cluster.
   harvestSupply: {
     label: 'Harvest Supply',
     colors: [
@@ -53,6 +58,7 @@ export const PRESET_PALETTES = {
       '#f97316',
       '#fb923c',
       '#fbbf24',
+      '#3f6212',
     ],
   },
   // Bright Signal — yellow/teal marketing anchors with violet and coral accents.

@@ -14,6 +14,10 @@ interface ControlBarProps {
   onBlendShapeChange: (value: BlendShape) => void
   blendIntensity: number
   onBlendIntensityChange: (value: number) => void
+  blendAngleMin: number
+  blendAngleMax: number
+  onBlendAngleMinChange: (value: number) => void
+  onBlendAngleMaxChange: (value: number) => void
 }
 
 const BLEND_SHAPES: { value: BlendShape; label: string }[] = [
@@ -29,10 +33,17 @@ export function ControlBar({
   onBlendShapeChange,
   blendIntensity,
   onBlendIntensityChange,
+  blendAngleMin,
+  blendAngleMax,
+  onBlendAngleMinChange,
+  onBlendAngleMaxChange,
 }: ControlBarProps) {
+  const preset = selected !== 'unbranded' ? PRESET_PALETTES[selected] : null
+  const angleDisabled = blendShape === 'round'
+
   return (
-    <div className="control-bar">
-      <div className="control-group">
+    <div className="control-panel">
+      <div className="control-row control-row--brand">
         <span className="control-label">Brand</span>
         <div className="control-pills" role="group" aria-label="Brand palette">
           <button
@@ -60,9 +71,24 @@ export function ControlBar({
             </button>
           ))}
         </div>
+        {preset ? (
+          <div
+            className="brand-colors-strip"
+            aria-label={`${preset.label} brand colors`}
+          >
+            {preset.colors.map(color => (
+              <span
+                key={color}
+                className="brand-color-dot"
+                style={{ background: color }}
+                title={color}
+              />
+            ))}
+          </div>
+        ) : null}
       </div>
 
-      <div className="control-group">
+      <div className="control-row control-row--blend">
         <span className="control-label">Blend</span>
         <div className="control-pills" role="radiogroup" aria-label="Blend shape">
           {BLEND_SHAPES.map(({ value, label }) => (
@@ -78,21 +104,66 @@ export function ControlBar({
             </button>
           ))}
         </div>
-      </div>
 
-      <div className="control-group control-group--slider">
-        <span className="control-label">Intensity</span>
-        <input
-          className="intensity-slider"
-          type="range"
-          min={0}
-          max={1}
-          step={0.05}
-          value={blendIntensity}
-          onChange={e => onBlendIntensityChange(Number(e.target.value))}
-          disabled={blendShape === 'round'}
-          aria-valuenow={blendIntensity}
-        />
+        <span className="control-label control-label--spaced">Intensity</span>
+        <div className="control-slider-wrap">
+          <input
+            className="control-slider"
+            type="range"
+            min={0}
+            max={1}
+            step={0.05}
+            value={blendIntensity}
+            onChange={e => onBlendIntensityChange(Number(e.target.value))}
+            disabled={blendShape === 'round'}
+            aria-valuenow={blendIntensity}
+          />
+          <span className="control-slider-value">
+            {blendIntensity.toFixed(2)}
+          </span>
+        </div>
+
+        <span className="control-label control-label--spaced">Angle</span>
+        <div className="control-angle">
+          <div className="control-angle-field">
+            <span className="control-sublabel">Min</span>
+            <input
+              className="control-slider control-slider--angle"
+              type="range"
+              min={0}
+              max={360}
+              step={1}
+              value={blendAngleMin}
+              onChange={e => {
+                const next = Number(e.target.value)
+                onBlendAngleMinChange(next)
+                if (next > blendAngleMax) onBlendAngleMaxChange(next)
+              }}
+              disabled={angleDisabled}
+              aria-label="Blend angle minimum"
+            />
+            <span className="control-angle-value">{blendAngleMin}°</span>
+          </div>
+          <div className="control-angle-field">
+            <span className="control-sublabel">Max</span>
+            <input
+              className="control-slider control-slider--angle"
+              type="range"
+              min={0}
+              max={360}
+              step={1}
+              value={blendAngleMax}
+              onChange={e => {
+                const next = Number(e.target.value)
+                onBlendAngleMaxChange(next)
+                if (next < blendAngleMin) onBlendAngleMinChange(next)
+              }}
+              disabled={angleDisabled}
+              aria-label="Blend angle maximum"
+            />
+            <span className="control-angle-value">{blendAngleMax}°</span>
+          </div>
+        </div>
       </div>
     </div>
   )

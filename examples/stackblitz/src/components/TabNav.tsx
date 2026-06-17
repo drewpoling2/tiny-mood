@@ -7,6 +7,7 @@ const TABS: { id: DemoTab; label: string }[] = [
   { id: 'avatars', label: 'Avatars' },
   { id: 'commits', label: 'Commits' },
   { id: 'journal', label: 'Journal' },
+  { id: 'blendLab', label: 'Blend Lab' },
 ]
 
 interface TabNavProps {

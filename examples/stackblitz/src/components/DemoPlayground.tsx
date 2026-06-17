@@ -7,6 +7,7 @@ import { BlogPostsView } from './views/BlogPostsView'
 import { CommitsView } from './views/CommitsView'
 import { JournalView } from './views/JournalView'
 import { NewsletterView } from './views/NewsletterView'
+import { BlendLabView } from './views/BlendLabView'
 import { PodcastView } from './views/PodcastView'
 import {
   buildMoodOptions,
@@ -18,11 +19,20 @@ export function DemoPlayground() {
   const [tab, setTab] = useState<DemoTab>('blog')
   const [selected, setSelected] = useState<SelectedPreset>('harvestSupply')
   const [blendShape, setBlendShape] = useState<BlendShape>('round')
-  const [blendIntensity, setBlendIntensity] = useState(0.1)
+  const [blendIntensity, setBlendIntensity] = useState(0)
+  const [blendAngleMin, setBlendAngleMin] = useState(90)
+  const [blendAngleMax, setBlendAngleMax] = useState(160)
 
   const moodOptions = useMemo(
-    () => buildMoodOptions(selected, blendShape, blendIntensity),
-    [selected, blendShape, blendIntensity]
+    () =>
+      buildMoodOptions(
+        selected,
+        blendShape,
+        blendIntensity,
+        blendAngleMin,
+        blendAngleMax
+      ),
+    [selected, blendShape, blendIntensity, blendAngleMin, blendAngleMax]
   )
 
   return (
@@ -35,6 +45,10 @@ export function DemoPlayground() {
         onBlendShapeChange={setBlendShape}
         blendIntensity={blendIntensity}
         onBlendIntensityChange={setBlendIntensity}
+        blendAngleMin={blendAngleMin}
+        blendAngleMax={blendAngleMax}
+        onBlendAngleMinChange={setBlendAngleMin}
+        onBlendAngleMaxChange={setBlendAngleMax}
       />
       <div className="tab-content">
         {tab === 'blog' ? <BlogPostsView moodOptions={moodOptions} /> : null}
@@ -45,6 +59,9 @@ export function DemoPlayground() {
         {tab === 'avatars' ? <AvatarsView moodOptions={moodOptions} /> : null}
         {tab === 'commits' ? <CommitsView moodOptions={moodOptions} /> : null}
         {tab === 'journal' ? <JournalView moodOptions={moodOptions} /> : null}
+        {tab === 'blendLab' ? (
+          <BlendLabView moodOptions={moodOptions} />
+        ) : null}
       </div>
     </>
   )
